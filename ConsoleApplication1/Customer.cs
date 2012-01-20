@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 
 namespace ConsoleApplication1
 {
@@ -19,6 +20,6 @@ namespace ConsoleApplication1
 
         public int ShoeSize { get; set; }
 
-        public ICollection<Address> Addresses { get; set; }
+        public Collection<Address> Addresses { get; set; }
     }
 }
