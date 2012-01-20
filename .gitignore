@@ -15,3 +15,5 @@ build/
 [Oo]bj/
 [Rr]elease/
 _[Rr]e[Ss]harper.*/
+packages/RavenDB*/server/Data/
+packages/RavenDB*/server/Logs/

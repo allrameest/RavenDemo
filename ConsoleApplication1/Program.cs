@@ -7,10 +7,11 @@ namespace ConsoleApplication1
     {
         private static void Main()
         {
-            var store = new DocumentStore();
+            var store = new DocumentStore() {Url = "http://localhost:8080/"}.Initialize();
 
             using (var session = store.OpenSession())
             {
+                
                 var customer = new Customer
                                    {
                                        FirstName = "Erik",
