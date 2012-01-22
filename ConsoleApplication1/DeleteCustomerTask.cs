@@ -1,6 +1,8 @@
+using ConsoleApplication1.Entities;
+
 namespace ConsoleApplication1
 {
-    internal class DeleteCustomerTask
+    internal class DeleteCustomerTask : IDemoTask
     {
         public void Execute()
         {

@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using System.Linq;
+using ConsoleApplication1.Entities;
 
 namespace ConsoleApplication1
 {
-    internal class CreateCustomerTask
+    internal class CreateCustomerTask : IDemoTask
     {
          public void Execute()
          {

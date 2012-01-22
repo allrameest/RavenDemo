@@ -15,9 +15,19 @@ namespace ConsoleApplication1
 
         private static void Main()
         {
-            new DeleteCustomerTask().Execute();
-            new CreateCustomerTask().Execute();
-            new QueryForCustomerTask().Execute();
+            var tasks = new IDemoTask[]
+                            {
+                                new DeleteCustomerTask(),
+                                new CreateCustomerTask(),
+                                new QueryForCustomerTask(),
+                            };
+
+            foreach (var task in tasks)
+            {
+                Console.WriteLine("* " + task.GetType().Name);
+                task.Execute();
+                Console.WriteLine();
+            }
 
             Console.ReadKey();
         }

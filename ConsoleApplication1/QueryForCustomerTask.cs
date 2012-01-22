@@ -1,10 +1,11 @@
 using System;
 using System.Linq;
+using ConsoleApplication1.Entities;
 using Raven.Client.Linq;
 
 namespace ConsoleApplication1
 {
-    internal class QueryForCustomerTask
+    internal class QueryForCustomerTask : IDemoTask
     {
         public void Execute()
         {
