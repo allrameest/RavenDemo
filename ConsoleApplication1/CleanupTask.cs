@@ -2,7 +2,7 @@ using ConsoleApplication1.Entities;
 
 namespace ConsoleApplication1
 {
-    internal class DeleteCustomerTask : IDemoTask
+    internal class CleanupTask : IDemoTask
     {
         public void Execute()
         {

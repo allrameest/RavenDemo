@@ -17,9 +17,10 @@ namespace ConsoleApplication1
         {
             var tasks = new IDemoTask[]
                             {
-                                new DeleteCustomerTask(),
-                                new CreateCustomerTask(),
-                                new QueryForCustomerTask(),
+                                new CleanupTask(),
+                                //new CreateCustomerTask(),
+                                //new QueryForCustomerTask(),
+                                new CreateCustomerAndOrderTask(),
                             };
 
             foreach (var task in tasks)

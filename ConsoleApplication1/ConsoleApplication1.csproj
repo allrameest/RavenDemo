@@ -65,10 +65,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CreateCustomerAndOrderTask.cs" />
     <Compile Include="Entities\Address.cs" />
     <Compile Include="CreateCustomerTask.cs" />
     <Compile Include="Entities\Customer.cs" />
-    <Compile Include="DeleteCustomerTask.cs" />
+    <Compile Include="CleanupTask.cs" />
+    <Compile Include="Entities\Order.cs" />
     <Compile Include="Entities\Product.cs" />
     <Compile Include="IDemoTask.cs" />
     <Compile Include="Program.cs" />
