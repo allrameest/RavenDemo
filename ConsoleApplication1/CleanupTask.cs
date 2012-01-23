@@ -1,4 +1,5 @@
 using ConsoleApplication1.Entities;
+using Raven.Client;
 
 namespace ConsoleApplication1
 {
@@ -8,12 +9,18 @@ namespace ConsoleApplication1
         {
             using (var session = Program.Store.OpenSession())
             {
-                foreach (var customer in session.Query<Customer>())
-                {
-                    session.Delete(customer);
-                }
-
+                Cleanup<Customer>(session);
+                Cleanup<Order>(session);
+                Cleanup<Product>(session);
                 session.SaveChanges();
+            }
+        }
+
+        private static void Cleanup<T>(IDocumentSession session)
+        {
+            foreach (var item in session.Query<T>())
+            {
+                session.Delete(item);
             }
         }
     }

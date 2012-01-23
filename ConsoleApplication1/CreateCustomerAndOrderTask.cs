@@ -1,6 +1,4 @@
-using System;
-using System.Collections.ObjectModel;
-using System.Linq;
+using System.Transactions;
 using ConsoleApplication1.Entities;
 
 namespace ConsoleApplication1
@@ -9,41 +7,22 @@ namespace ConsoleApplication1
     {
         public void Execute()
         {
-            int id;
             using (var session = Program.Store.OpenSession())
             {
-                var customer = new Customer
-                                   {
-                                       FirstName = "Erik",
-                                       LastName = "Juhlin",
-                                       Email = "erik@juhlin.nu",
-                                       AcceptNewsletter = true,
-                                       Addresses = new Collection<Address>
-                                                       {
-                                                           new Address
-                                                               {
-                                                                   Street = "Helmfeltsgatan 7",
-                                                                   City = "Helsingborg"
-                                                               }
-                                                       }
-                                   };
+                using (var t = new TransactionScope())
+                {
+                    session.Store(new Customer {FirstName = "Erik"});
 
-                session.Store(customer);
-                id = customer.Id;
+                    session.SaveChanges();
 
-                session.SaveChanges();
+                    //throw new Exception();
 
-                var order = new Order {Customer = customer};
-                session.Store(order);
+                    session.Store(new Order {Customer = new Customer {FirstName = "Erik"}});
 
-                session.SaveChanges();
-            }
+                    session.SaveChanges();
 
-
-            using (var session = Program.Store.OpenSession())
-            {
-                var customer = session.Load<Customer>(id);
-                Console.WriteLine(customer.FirstName + " " + customer.Addresses.First().City);
+                    t.Complete();
+                }
             }
         }
     }

@@ -26,7 +26,14 @@ namespace ConsoleApplication1
             foreach (var task in tasks)
             {
                 Console.WriteLine("* " + task.GetType().Name);
-                task.Execute();
+                try
+                {
+                    task.Execute();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex);
+                }
                 Console.WriteLine();
             }
 
