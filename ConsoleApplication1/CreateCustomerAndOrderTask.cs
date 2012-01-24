@@ -1,5 +1,5 @@
 using System.Transactions;
-using ConsoleApplication1.Entities;
+using Shared.Entities;
 
 namespace ConsoleApplication1
 {

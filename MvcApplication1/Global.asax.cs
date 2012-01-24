@@ -42,6 +42,8 @@ namespace MvcApplication1
                                              x.Scan(a => a.WithDefaultConventions());
                                              x.For<Func<IDocumentSession>>().Use(() => DocumentSession);
                                          });
+
+            DependencyResolver.SetResolver(new SmDependencyResolver(ObjectFactory.Container));
         }
 
         protected void Application_BeginRequest(object sender, EventArgs e)

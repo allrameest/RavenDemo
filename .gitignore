@@ -17,3 +17,5 @@ build/
 _[Rr]e[Ss]harper.*/
 packages/RavenDB*/server/Data/
 packages/RavenDB*/server/Logs/
+*.crunchproject.local.xml
+*.crunchsolution.local.xml

@@ -1,5 +1,5 @@
-using ConsoleApplication1.Entities;
 using Raven.Client;
+using Shared.Entities;
 
 namespace ConsoleApplication1
 {

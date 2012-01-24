@@ -1,7 +1,7 @@
 using System;
 using System.Linq;
-using ConsoleApplication1.Entities;
 using Raven.Client.Linq;
+using Shared.Entities;
 
 namespace ConsoleApplication1
 {
@@ -21,7 +21,6 @@ namespace ConsoleApplication1
                 {
                     Console.WriteLine(customer.FirstName);
                 }
-
             }
         }
     }

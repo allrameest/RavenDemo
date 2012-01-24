@@ -1,8 +1,56 @@
-﻿@{
-    ViewBag.Title = "Home Page";
+﻿@model IEnumerable<Shared.Entities.Customer>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>@ViewBag.Message</h2>
-<p>
-    To learn more about ASP.NET MVC visit <a href="http://asp.net/mvc" title="ASP.NET MVC Website">http://asp.net/mvc</a>.
-</p>
+<h2>Index</h2>
+
+<table>
+    <tr>
+        <th>
+            FirstName
+        </th>
+        <th>
+            LastName
+        </th>
+        <th>
+            Email
+        </th>
+        <th>
+            BirthDate
+        </th>
+        <th>
+            AcceptNewsletter
+        </th>
+        <th>
+            ShoeSize
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BirthDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AcceptNewsletter)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ShoeSize)
+            </td>
+        </tr>
+    }
+
+</table>
