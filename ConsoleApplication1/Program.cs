@@ -28,6 +28,7 @@ namespace ConsoleApplication1
                                 new CreateCustomerAndOrderTask(),
                                 new SessionCachingStuffTask(),
                                 new DoStuffWithProductsTask(),
+                                new QueryEverythingTask(),
                             };
 
             foreach (var task in tasks)
