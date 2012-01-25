@@ -29,6 +29,7 @@ namespace ConsoleApplication1
                                 //new SessionCachingStuffTask(),
                                 //new DoStuffWithProductsTask(),
                                 //new QueryEverythingTask(),
+                                new StaleResultTask(),
                                 new PagedQueryTask(),
                             };
 
