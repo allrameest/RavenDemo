@@ -1,3 +1,4 @@
+using System.Linq;
 using Raven.Client;
 using Shared.Entities;
 
@@ -18,7 +19,7 @@ namespace ConsoleApplication1
 
         private static void Cleanup<T>(IDocumentSession session)
         {
-            foreach (var item in session.Query<T>())
+            foreach (var item in session.Query<T>().Take(1000))
             {
                 session.Delete(item);
             }

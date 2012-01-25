@@ -73,6 +73,7 @@
     <Compile Include="CleanupTask.cs" />
     <Compile Include="DoStuffWithProductsTask.cs" />
     <Compile Include="IDemoTask.cs" />
+    <Compile Include="PagedQueryTask.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QueryEverythingTask.cs" />
