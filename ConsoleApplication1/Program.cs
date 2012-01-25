@@ -18,9 +18,11 @@ namespace ConsoleApplication1
             var tasks = new IDemoTask[]
                             {
                                 new CleanupTask(),
-                                //new CreateCustomerTask(),
-                                //new QueryForCustomerTask(),
+                                new CreateCustomerTask(),
+                                new QueryForCustomerTask(),
                                 new CreateCustomerAndOrderTask(),
+                                new SessionCachingStuffTask(),
+                                new DoStuffWithProductsTask(),
                             };
 
             foreach (var task in tasks)
@@ -39,5 +41,9 @@ namespace ConsoleApplication1
 
             Console.ReadKey();
         }
+    }
+
+    internal class SessionCachingStuffTask : IDemoTask
+    {
     }
 }
