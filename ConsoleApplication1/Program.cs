@@ -6,7 +6,12 @@ namespace ConsoleApplication1
 {
     internal class Program
     {
-        private static readonly IDocumentStore _store = new DocumentStore {Url = "http://localhost:8080/"}.Initialize();
+        private static readonly IDocumentStore _store = InitializeStore();
+
+        private static IDocumentStore InitializeStore()
+        {
+            return new DocumentStore {Url = "http://localhost:8080/"}.Initialize();
+        }
 
         public static IDocumentStore Store
         {
@@ -41,9 +46,5 @@ namespace ConsoleApplication1
 
             Console.ReadKey();
         }
-    }
-
-    internal class SessionCachingStuffTask : IDemoTask
-    {
     }
 }
