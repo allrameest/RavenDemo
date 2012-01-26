@@ -15,7 +15,7 @@ namespace ConsoleApplication1
                                        {
                                            for (int j = 0; j < 10; j++)
                                            {
-                                               session.Store(new Product {Title = string.Format("{0} {1}", i, j)});
+                                               session.Store(new BlogPost {Title = string.Format("{0} {1}", i, j)});
                                            }
                                            session.SaveChanges();
                                        }
@@ -23,10 +23,10 @@ namespace ConsoleApplication1
 
             using (var session = Program.Store.OpenSession())
             {
-                var products = session.Query<Product>()
+                var blogPosts = session.Query<BlogPost>()
                     .Customize(c => c.WaitForNonStaleResultsAsOfNow());
 
-                Console.WriteLine(products.Count());
+                Console.WriteLine(blogPosts.Count());
             }
         }
     }

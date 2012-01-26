@@ -13,6 +13,7 @@ namespace ConsoleApplication1
                 Cleanup<Customer>(session);
                 Cleanup<Order>(session);
                 Cleanup<Product>(session);
+                Cleanup<BlogPost>(session);
                 session.SaveChanges();
             }
         }

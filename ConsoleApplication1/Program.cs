@@ -28,13 +28,14 @@ namespace ConsoleApplication1
                                 new CleanupTask(),
                                 new CreateCustomerTask(),
                                 new QueryOnStaticIndexTask(),
-                                //new QueryForCustomerTask(),
-                                //new CreateCustomerAndOrderTask(),
-                                //new SessionCachingStuffTask(),
-                                //new DoStuffWithProductsTask(),
-                                //new QueryEverythingTask(),
-                                //new StaleResultTask(),
-                                //new PagedQueryTask(),
+                                new QueryForCustomerTask(),
+                                new CreateCustomerAndOrderTask(),
+                                new SessionCachingStuffTask(),
+                                new DoStuffWithProductsTask(),
+                                new QueryEverythingTask(),
+                                new StaleResultTask(),
+                                new CleanupTask(),
+                                new PagedQueryTask(),
                             };
 
             foreach (var task in tasks)

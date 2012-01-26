@@ -14,22 +14,25 @@ namespace ConsoleApplication1
             {
                 for (int i = 0; i < 100; i++)
                 {
-                    session.Store(new Product {Title = i.ToString(CultureInfo.InvariantCulture)});
+                    session.Store(new BlogPost {Title = i.ToString(CultureInfo.InvariantCulture)});
                 }
                 session.SaveChanges();
+            }
 
+            using (var session = Program.Store.OpenSession())
+            {
                 RavenQueryStatistics stats;
-                var products = session.Query<Product>()
-                    .Customize(c => c.WaitForNonStaleResultsAsOfNow())
+                var blogPosts = session.Query<BlogPost>()
+                    .Customize(c => c.WaitForNonStaleResults())
                     .Statistics(out stats)
                     .Skip(10)
                     .Take(10)
                     .ToArray();
 
                 Console.WriteLine("Total: " + stats.TotalResults);
-                foreach (var product in products)
+                foreach (var blogPost in blogPosts)
                 {
-                    Console.WriteLine(product.Title);
+                    Console.WriteLine(blogPost.Title);
                 }
             }
         }

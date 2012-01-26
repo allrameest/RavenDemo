@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Entities\Address.cs" />
+    <Compile Include="Entities\BlogPost.cs" />
     <Compile Include="Entities\Customer.cs" />
     <Compile Include="Entities\Order.cs" />
     <Compile Include="Entities\Product.cs" />
