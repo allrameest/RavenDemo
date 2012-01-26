@@ -14,21 +14,26 @@ namespace ConsoleApplication1
             {
                 var customer = new Customer
                                    {
-                                       FirstName = "Erik", LastName = "Juhlin", Email = "erik@juhlin.nu", AcceptNewsletter = true, Addresses = new Collection<Address>
-                                                                                                                                                   {
-                                                                                                                                                       new Address
-                                                                                                                                                           {
-                                                                                                                                                               Street = "Helmfeltsgatan 7", City = "Helsingborg"
-                                                                                                                                                           }
-                                                                                                                                                   }
+                                       FirstName = "Erik",
+                                       LastName = "Juhlin",
+                                       Email = "erik@juhlin.nu",
+                                       AcceptNewsletter = true,
+                                       Addresses = new Collection<Address>
+                                                       {
+                                                           new Address
+                                                               {
+                                                                   Street = "Helmfeltsgatan 7",
+                                                                   City = "Helsingborg"
+                                                               }
+                                                       }
                                    };
                 session.Store(customer);
                 session.Store(new Customer
-                {
-                    FirstName = "Mattias",
-                    LastName = "Jonsson",
-                    AcceptNewsletter = true,
-                    Addresses = new Collection<Address>
+                                  {
+                                      FirstName = "Mattias",
+                                      LastName = "Jonsson",
+                                      AcceptNewsletter = true,
+                                      Addresses = new Collection<Address>
                                                       {
                                                           new Address
                                                               {
@@ -36,10 +41,9 @@ namespace ConsoleApplication1
                                                                   City = "Helsingborg"
                                                               }
                                                       }
-                });
+                                  });
                 id = customer.Id;
                 Console.WriteLine(id);
-
                 session.SaveChanges();
             }
 

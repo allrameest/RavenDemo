@@ -28,7 +28,7 @@ namespace ConsoleApplication1
                     .Skip(10)
                     .Take(10)
                     .ToArray();
-
+                
                 Console.WriteLine("Total: " + stats.TotalResults);
                 foreach (var blogPost in blogPosts)
                 {

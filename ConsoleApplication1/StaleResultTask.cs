@@ -1,6 +1,7 @@
 using System;
 using System.Linq;
 using System.Threading.Tasks;
+using Raven.Client.Linq;
 using Shared.Entities;
 
 namespace ConsoleApplication1
@@ -23,7 +24,9 @@ namespace ConsoleApplication1
 
             using (var session = Program.Store.OpenSession())
             {
+                RavenQueryStatistics stats;
                 var blogPosts = session.Query<BlogPost>()
+                    .Statistics(out stats)
                     .Customize(c => c.WaitForNonStaleResultsAsOfNow());
 
                 Console.WriteLine(blogPosts.Count());

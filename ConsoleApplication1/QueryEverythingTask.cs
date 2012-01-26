@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using Raven.Client.Linq;
 using Shared.Entities;
@@ -19,7 +20,7 @@ namespace ConsoleApplication1
                     .Where(p => p.Title.StartsWith("Dr"))
                     .Lazily();
 
-                var orders = session.Query<Order>()
+                Lazy<IEnumerable<Order>> orders = session.Query<Order>()
                     .Lazily();
 
                 foreach (var customer in customers.Value)
