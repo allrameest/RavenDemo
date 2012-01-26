@@ -1,6 +1,7 @@
 ﻿using System;
 using Raven.Client;
 using Raven.Client.Document;
+using Raven.Client.Indexes;
 
 namespace ConsoleApplication1
 {
@@ -10,7 +11,9 @@ namespace ConsoleApplication1
 
         private static IDocumentStore InitializeStore()
         {
-            return new DocumentStore {Url = "http://localhost:8080/"}.Initialize();
+            var store = new DocumentStore { Url = "http://localhost:8080/" }.Initialize();
+            IndexCreation.CreateIndexes(typeof (Program).Assembly, store);
+            return store;
         }
 
         public static IDocumentStore Store
@@ -23,14 +26,15 @@ namespace ConsoleApplication1
             var tasks = new IDemoTask[]
                             {
                                 new CleanupTask(),
-                                //new CreateCustomerTask(),
+                                new CreateCustomerTask(),
+                                new QueryOnStaticIndexTask(),
                                 //new QueryForCustomerTask(),
                                 //new CreateCustomerAndOrderTask(),
                                 //new SessionCachingStuffTask(),
                                 //new DoStuffWithProductsTask(),
                                 //new QueryEverythingTask(),
-                                new StaleResultTask(),
-                                new PagedQueryTask(),
+                                //new StaleResultTask(),
+                                //new PagedQueryTask(),
                             };
 
             foreach (var task in tasks)

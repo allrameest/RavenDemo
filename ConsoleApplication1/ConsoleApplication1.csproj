@@ -73,11 +73,13 @@
     <Compile Include="CleanupTask.cs" />
     <Compile Include="DoStuffWithProductsTask.cs" />
     <Compile Include="IDemoTask.cs" />
+    <Compile Include="Indexes\Customers_ByFirstName.cs" />
     <Compile Include="PagedQueryTask.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QueryEverythingTask.cs" />
     <Compile Include="QueryForCustomerTask.cs" />
+    <Compile Include="QueryOnStaticIndexTask.cs" />
     <Compile Include="SessionCachingStuffTask.cs" />
     <Compile Include="StaleResultTask.cs" />
   </ItemGroup>
