@@ -10,9 +10,13 @@ namespace MvcApplication1
 {
     public class MvcApplication : HttpApplication
     {
-        private static IDocumentStore _documentStore = new DocumentStore { ConnectionStringName = "RavenDB" }.Initialize();
+        private static readonly IDocumentStore _documentStore = new DocumentStore { ConnectionStringName = "RavenDB" }.Initialize();
 
-        public static IDocumentSession DocumentSession { get; private set; }
+        private static IDocumentSession DocumentSession
+        {
+            get { return (IDocumentSession) HttpContext.Current.Items["RavenSession"]; }
+            set { HttpContext.Current.Items["RavenSession"] = value; }
+        }
 
         public static void RegisterGlobalFilters(GlobalFilterCollection filters)
         {
