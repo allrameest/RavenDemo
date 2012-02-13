@@ -17,7 +17,7 @@ namespace Tests
             DocumentSession.Store(new Customer {FirstName = "Mattias"});
             DocumentSession.SaveChanges();
 
-            var controller = new HomeController(() => DocumentSession);
+            var controller = new HomeController(DocumentSession);
 
             var r = (ViewResult) controller.Index();
             var customers = (IEnumerable<Customer>) r.Model;

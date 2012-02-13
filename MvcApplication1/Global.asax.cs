@@ -1,23 +1,16 @@
-﻿using System;
+﻿using System.Reflection;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
+using Autofac;
+using Autofac.Integration.Mvc;
 using Raven.Client;
 using Raven.Client.Document;
-using StructureMap;
 
 namespace MvcApplication1
 {
     public class MvcApplication : HttpApplication
     {
-        private static readonly IDocumentStore _documentStore = new DocumentStore { ConnectionStringName = "RavenDB" }.Initialize();
-
-        private static IDocumentSession DocumentSession
-        {
-            get { return (IDocumentSession) HttpContext.Current.Items["RavenSession"]; }
-            set { HttpContext.Current.Items["RavenSession"] = value; }
-        }
-
         public static void RegisterGlobalFilters(GlobalFilterCollection filters)
         {
             filters.Add(new HandleErrorAttribute());
@@ -41,27 +34,15 @@ namespace MvcApplication1
             RegisterGlobalFilters(GlobalFilters.Filters);
             RegisterRoutes(RouteTable.Routes);
 
-            ObjectFactory.Initialize(x =>
-                                         {
-                                             x.Scan(a => a.WithDefaultConventions());
-                                             x.For<Func<IDocumentSession>>().Use(() => DocumentSession);
-                                         });
+            var builder = new ContainerBuilder();
+            builder.RegisterControllers(Assembly.GetExecutingAssembly());
+            builder.RegisterModelBinders(Assembly.GetExecutingAssembly());
+            builder.RegisterInstance(new DocumentStore {ConnectionStringName = "RavenDB"}.Initialize());
+            builder.Register(c => c.Resolve<IDocumentStore>().OpenSession()).InstancePerLifetimeScope();
 
-            DependencyResolver.SetResolver(new SmDependencyResolver(ObjectFactory.Container));
-        }
+            var container = builder.Build();
 
-        protected void Application_BeginRequest(object sender, EventArgs e)
-        {
-            DocumentSession = _documentStore.OpenSession();
-        }
-
-        protected void Application_EndRequest(object sender, EventArgs e)
-        {
-            var session = DocumentSession;
-            if (session != null)
-            {
-                session.Dispose();
-            }
+            DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
         }
     }
 }

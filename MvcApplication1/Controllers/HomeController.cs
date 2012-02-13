@@ -1,5 +1,4 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using System.Web.Mvc;
 using Raven.Client;
 using Raven.Client.Linq;
@@ -9,16 +8,16 @@ namespace MvcApplication1.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly Func<IDocumentSession> _currentSessionFactory;
+        private readonly IDocumentSession _session;
 
-        public HomeController(Func<IDocumentSession> currentSessionFactory)
+        public HomeController(IDocumentSession session)
         {
-            _currentSessionFactory = currentSessionFactory;
+            _session = session;
         }
 
         public ActionResult Index()
         {
-            var customers = _currentSessionFactory()
+            var customers = _session
                 .Query<Customer>()
                 .Where(c => c.FirstName.StartsWith("e"))
                 .ToArray();
