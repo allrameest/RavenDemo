@@ -11,7 +11,7 @@ namespace ConsoleApplication1
 
         private static IDocumentStore InitializeStore()
         {
-            var store = new DocumentStore { Url = "http://localhost:8080/" }.Initialize();
+            var store = new DocumentStore { Url = "http://localhost:8081/" }.Initialize();
             IndexCreation.CreateIndexes(typeof (Program).Assembly, store);
             return store;
         }

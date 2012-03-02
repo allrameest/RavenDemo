@@ -15,11 +15,11 @@ namespace MvcApplication1.Controllers
             _session = session;
         }
 
-        public ActionResult Index()
+        public ActionResult Index(string query = "")
         {
             var customers = _session
                 .Query<Customer>()
-                .Where(c => c.FirstName.StartsWith("e"))
+                .Where(c => c.FirstName.StartsWith(query))
                 .ToArray();
 
             return View(customers);
