@@ -1,9 +1,13 @@
-﻿namespace Shared.Entities
+﻿using System;
+
+namespace Shared.Entities
 {
     public class Order
     {
-        public int Id { get; set; }
+        public string Id { get; set; }
 
-        public Customer Customer { get; set; }
+        public string CustomerId { get; set; }
+
+    	public DateTime Created { get; set; }
     }
 }

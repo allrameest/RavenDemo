@@ -9,7 +9,7 @@ namespace ConsoleApplication1
     {
         public void Execute()
         {
-            int id;
+            string id;
             using (var session = Program.Store.OpenSession())
             {
                 var customer = new Customer

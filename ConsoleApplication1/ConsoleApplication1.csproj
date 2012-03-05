@@ -79,6 +79,7 @@
     <Compile Include="QueryEverythingTask.cs" />
     <Compile Include="QueryForCustomerTask.cs" />
     <Compile Include="QueryOnStaticIndexTask.cs" />
+    <Compile Include="QueryUsingIncludeTask.cs" />
     <Compile Include="SessionCachingStuffTask.cs" />
     <Compile Include="StaleResultTask.cs" />
   </ItemGroup>

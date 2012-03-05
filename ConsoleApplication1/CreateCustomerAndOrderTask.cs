@@ -12,13 +12,14 @@ namespace ConsoleApplication1
             {
                 using (var t = new TransactionScope())
                 {
-                    session.Store(new Customer {FirstName = "Erik"});
+                	var customer = new Customer {FirstName = "Erik"};
+                	session.Store(customer);
 
                     session.SaveChanges();
 
                     //throw new Exception();
 
-                    session.Store(new Order {Customer = new Customer {FirstName = "Erik"}});
+                    session.Store(new Order {CustomerId = customer.Id, Created = DateTime.Now});
 
                     session.SaveChanges();
 

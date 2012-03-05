@@ -29,11 +29,12 @@ namespace ConsoleApplication1
 
 			var tasks = new IDemoTask[]
 			            	{
-			            		new CleanupTask(),
-			            		new CreateCustomerTask(),
+								new CleanupTask(),
+								//new CreateCustomerTask(),
 			            		//new QueryOnStaticIndexTask(),
 			            		//new QueryForCustomerTask(),
-			            		//new CreateCustomerAndOrderTask(),
+			            		new CreateCustomerAndOrderTask(),
+								new QueryUsingIncludeTask(),
 			            		//new SessionCachingStuffTask(),
 			            		//new DoStuffWithProductsTask(),
 			            		//new QueryEverythingTask(),

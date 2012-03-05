@@ -35,7 +35,7 @@ namespace ConsoleApplication1
 
                 foreach (var order in orders.Value)
                 {
-                    Console.WriteLine(order.Customer.FirstName);
+                    Console.WriteLine(order.Created);
                 }
             }
         }
