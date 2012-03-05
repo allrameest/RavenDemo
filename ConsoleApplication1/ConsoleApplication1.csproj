@@ -67,7 +67,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Actor.cs" />
     <Compile Include="CreateCustomerAndOrderTask.cs" />
     <Compile Include="CreateCustomerTask.cs" />
     <Compile Include="CleanupTask.cs" />

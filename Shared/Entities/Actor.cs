@@ -1,6 +1,6 @@
-namespace ConsoleApplication1
+namespace Shared.Entities
 {
-    internal class Actor
+    public class Actor
     {
         public string Name { get; set; }
         public string Url { get; set; }
