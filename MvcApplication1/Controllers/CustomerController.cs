@@ -6,11 +6,11 @@ using Shared.Entities;
 
 namespace MvcApplication1.Controllers
 {
-    public class HomeController : Controller
+    public class CustomerController : Controller
     {
         private readonly IDocumentSession _session;
 
-        public HomeController(IDocumentSession session)
+        public CustomerController(IDocumentSession session)
         {
             _session = session;
         }
