@@ -19,7 +19,7 @@ namespace MvcApplication1.Controllers
         {
             var customers = _session
                 .Query<Customer>()
-                .Where(c => c.FirstName.StartsWith(query))
+               // .Where(c => c.FirstName.StartsWith(query))
                 .ToArray();
 
             return View(customers);
