@@ -3,7 +3,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using Shared.Entities;
 
-namespace ConsoleApplication1
+namespace ConsoleApplication1.DemoTasks
 {
     internal class CreateCustomerTask : IDemoTask
     {

@@ -2,7 +2,7 @@ using System;
 using System.Diagnostics;
 using Shared.Entities;
 
-namespace ConsoleApplication1
+namespace ConsoleApplication1.DemoTasks
 {
     internal class SessionCachingStuffTask : IDemoTask
     {
@@ -18,21 +18,21 @@ namespace ConsoleApplication1
             }
 
             var stopwatch = Stopwatch.StartNew();
-            //using (var session = Program.Store.OpenSession())
-            //{
-            //    for (int i = 0; i < 1000; i++)
-            //    {
-            //        session.Load<Product>(id);
-            //    }
-            //}
-
-            for (int i = 0; i < 1000; i++)
+            using (var session = Program.Store.OpenSession())
             {
-                using (var session = Program.Store.OpenSession())
+                for (int i = 0; i < 1000; i++)
                 {
                     session.Load<Product>(id);
                 }
             }
+
+            //for (int i = 0; i < 1000; i++)
+            //{
+            //    using (var session = Program.Store.OpenSession())
+            //    {
+            //        session.Load<Product>(id);
+            //    }
+            //}
 
             stopwatch.Stop();
             Console.WriteLine("{0} ms", stopwatch.Elapsed.TotalMilliseconds);

@@ -2,7 +2,7 @@ using System.Linq;
 using Raven.Client;
 using Shared.Entities;
 
-namespace ConsoleApplication1
+namespace ConsoleApplication1.DemoTasks
 {
     internal class CleanupTask : IDemoTask
     {

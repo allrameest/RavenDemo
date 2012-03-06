@@ -2,7 +2,7 @@ using System;
 using System.Linq;
 using Shared.Entities;
 
-namespace ConsoleApplication1
+namespace ConsoleApplication1.DemoTasks
 {
 	internal class QueryForMigratedCustomerTask : IDemoTask
 	{
@@ -13,7 +13,7 @@ namespace ConsoleApplication1
 				var customers = session.Query<Customer>().ToArray();
 				foreach (var customer in customers)
 				{
-					Console.WriteLine(customer.Name + " " + customer.Addresses.First().City);
+					Console.WriteLine(customer.FirstName + " " + customer.Addresses.First().City);
 				}
 			}
 		}

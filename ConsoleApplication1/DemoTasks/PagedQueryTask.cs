@@ -4,7 +4,7 @@ using System.Linq;
 using Raven.Client.Linq;
 using Shared.Entities;
 
-namespace ConsoleApplication1
+namespace ConsoleApplication1.DemoTasks
 {
     internal class PagedQueryTask : IDemoTask
     {

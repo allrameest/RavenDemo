@@ -2,7 +2,7 @@ using System;
 using System.Transactions;
 using Shared.Entities;
 
-namespace ConsoleApplication1
+namespace ConsoleApplication1.DemoTasks
 {
     internal class CreateCustomerAndOrderTask : IDemoTask
     {

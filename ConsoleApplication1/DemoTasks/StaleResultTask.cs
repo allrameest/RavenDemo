@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 using Raven.Client.Linq;
 using Shared.Entities;
 
-namespace ConsoleApplication1
+namespace ConsoleApplication1.DemoTasks
 {
     internal class StaleResultTask : IDemoTask
     {
@@ -14,7 +14,7 @@ namespace ConsoleApplication1
                                    {
                                        using (var session = Program.Store.OpenSession())
                                        {
-                                           for (int j = 0; j < 10; j++)
+                                           for (int j = 0; j < 100; j++)
                                            {
                                                session.Store(new BlogPost {Title = string.Format("{0} {1}", i, j)});
                                            }
@@ -25,9 +25,9 @@ namespace ConsoleApplication1
             using (var session = Program.Store.OpenSession())
             {
                 RavenQueryStatistics stats;
-                var blogPosts = session.Query<BlogPost>()
-                    .Statistics(out stats)
-                    .Customize(c => c.WaitForNonStaleResultsAsOfNow());
+                var blogPosts = session.Query<BlogPost>();
+                    //.Statistics(out stats)
+                    //.Customize(c => c.WaitForNonStaleResultsAsOfNow());
 
                 Console.WriteLine(blogPosts.Count());
             }

@@ -1,4 +1,5 @@
 ﻿using System;
+using ConsoleApplication1.DemoTasks;
 using ConsoleApplication1.Migration;
 using Raven.Client;
 using Raven.Client.Document;
@@ -32,19 +33,19 @@ namespace ConsoleApplication1
 
 			var tasks = new IDemoTask[]
 			            	{
-								//new CleanupTask(),
-								//new CreateCustomerTask(),
-			            		//new QueryOnStaticIndexTask(),
-			            		//new QueryForCustomerTask(),
-								//new CreateCustomerAndOrderTask(),
-								//new QueryUsingIncludeTask(),
-			            		//new SessionCachingStuffTask(),
-			            		//new DoStuffWithProductsTask(),
-			            		//new QueryEverythingTask(),
-			            		//new StaleResultTask(),
-			            		//new CleanupTask(),
-			            		//new PagedQueryTask(),
-								//new QueryForMigratedCustomerTask(),
+                                new CleanupTask(),
+                                //new CreateCustomerTask(),
+                                //new QueryOnStaticIndexTask(),
+                                //new QueryForCustomerTask(),
+                                //new CreateCustomerAndOrderTask(),
+                                //new QueryUsingIncludeTask(),
+                                //new SessionCachingStuffTask(),
+                                //new DoStuffWithProductsTask(),
+                                //new QueryEverythingTask(),
+                                new StaleResultTask(),
+                                //new CleanupTask(),
+                                //new PagedQueryTask(),
+                                //new QueryForMigratedCustomerTask(),
 			            	};
 
 			foreach (var task in tasks)
