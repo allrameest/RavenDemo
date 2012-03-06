@@ -29,5 +29,24 @@ namespace MvcApplication1.Controllers
         {
             return View();
         }
+
+        public ActionResult Create()
+        {
+            return View(new Customer());
+        }
+
+        [HttpPost]
+        public ActionResult Create(Customer customer)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(customer);
+            }
+
+            _session.Store(customer);
+            _session.SaveChanges();
+
+            return RedirectToAction("Index");
+        }
     }
 }
