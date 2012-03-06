@@ -6,28 +6,28 @@ using Shared.Entities;
 
 namespace MvcApplication1.Controllers
 {
-    public class HomeController : Controller
-    {
-        private readonly IDocumentSession _session;
+	public class HomeController : Controller
+	{
+		private readonly IDocumentSession _session;
 
-        public HomeController(IDocumentSession session)
-        {
-            _session = session;
-        }
+		public HomeController(IDocumentSession session)
+		{
+			_session = session;
+		}
 
-        public ActionResult Index(string query = "")
-        {
-            var customers = _session
-                .Query<Customer>()
-               // .Where(c => c.FirstName.StartsWith(query))
-                .ToArray();
+		public ActionResult Index(string query = "")
+		{
+			var customers = _session
+				.Query<Customer>()
+				.Where(c => c.FirstName.StartsWith(query))
+				.ToArray();
 
-            return View(customers);
-        }
+			return View(customers);
+		}
 
-        public ActionResult About()
-        {
-            return View();
-        }
-    }
+		public ActionResult About()
+		{
+			return View();
+		}
+	}
 }
