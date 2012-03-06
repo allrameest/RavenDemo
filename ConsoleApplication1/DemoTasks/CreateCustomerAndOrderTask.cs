@@ -8,24 +8,31 @@ namespace ConsoleApplication1.DemoTasks
     {
         public void Execute()
         {
+            string customerId;
+            string orderId;
             using (var session = Program.Store.OpenSession())
             {
                 using (var t = new TransactionScope())
                 {
                 	var customer = new Customer {FirstName = "Erik"};
                 	session.Store(customer);
+                    customerId = customer.Id;
 
                     session.SaveChanges();
 
                     //throw new Exception();
 
-                    session.Store(new Order {CustomerId = customer.Id, Created = DateTime.Now});
+                    var order = new Order {CustomerId = customer.Id, Created = DateTime.Now};
+                    session.Store(order);
+                    orderId = order.Id;
 
                     session.SaveChanges();
 
                     t.Complete();
                 }
             }
+
+            Console.WriteLine("Customer {0} and order {1} saved!", customerId, orderId);
         }
     }
 }

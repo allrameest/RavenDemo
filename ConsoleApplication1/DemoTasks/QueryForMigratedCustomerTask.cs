@@ -13,7 +13,7 @@ namespace ConsoleApplication1.DemoTasks
 				var customers = session.Query<Customer>().ToArray();
 				foreach (var customer in customers)
 				{
-					Console.WriteLine(customer.FirstName + " " + customer.Addresses.First().City);
+					Console.WriteLine(customer.FirstName);
 				}
 			}
 		}

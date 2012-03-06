@@ -5,7 +5,7 @@ using Shared.Entities;
 
 namespace ConsoleApplication1.DemoTasks
 {
-    internal class QueryForCustomerTask : IDemoTask
+    internal class QueryOnDynamicIndexTask : IDemoTask
     {
         public void Execute()
         {

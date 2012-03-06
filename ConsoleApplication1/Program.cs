@@ -8,42 +8,37 @@ using Raven.Client.Indexes;
 namespace ConsoleApplication1
 {
 	internal class Program
-	{
-		private static IDocumentStore _store;
+    {
+        public static IDocumentStore Store { get; private set; }
 
-		private static IDocumentStore InitializeStore()
+	    private static IDocumentStore InitializeStore()
 		{
 			var store = new DocumentStore {Url = "http://localhost:8080/"}
-				.RegisterListener(new CustomerVersion1ToVersion2Converter())
+			//	.RegisterListener(new CustomerVersion1ToVersion2Converter())
 				.Initialize();
+		    //store.AggressivelyCacheFor(TimeSpan.FromSeconds(1));
 			IndexCreation.CreateIndexes(typeof (Program).Assembly, store);
 			return store;
 		}
 
-		public static IDocumentStore Store
-		{
-			get { return _store; }
-		}
-
-		private static void Main()
+	    private static void Main()
 		{
 			AppDomain.CurrentDomain.UnhandledException += UnhandledExceptionHandler;
 
-			_store = InitializeStore();
+			Store = InitializeStore();
 
 			var tasks = new IDemoTask[]
 			            	{
-                                new CleanupTask(),
+                                //new CleanupTask(),
                                 //new CreateCustomerTask(),
                                 //new QueryOnStaticIndexTask(),
-                                //new QueryForCustomerTask(),
+                                //new QueryOnDynamicIndexTask(),
                                 //new CreateCustomerAndOrderTask(),
                                 //new QueryUsingIncludeTask(),
                                 //new SessionCachingStuffTask(),
                                 //new DoStuffWithProductsTask(),
                                 //new QueryEverythingTask(),
-                                new StaleResultTask(),
-                                //new CleanupTask(),
+                                //new StaleResultTask(),
                                 //new PagedQueryTask(),
                                 //new QueryForMigratedCustomerTask(),
 			            	};

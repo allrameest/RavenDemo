@@ -78,7 +78,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="DemoTasks\QueryEverythingTask.cs" />
-    <Compile Include="DemoTasks\QueryForCustomerTask.cs" />
+    <Compile Include="DemoTasks\QueryOnDynamicIndexTask.cs" />
     <Compile Include="DemoTasks\QueryForMigratedCustomerTask.cs" />
     <Compile Include="DemoTasks\QueryOnStaticIndexTask.cs" />
     <Compile Include="DemoTasks\QueryUsingIncludeTask.cs" />
