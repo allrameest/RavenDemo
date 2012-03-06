@@ -8,7 +8,7 @@ using Shared.Entities;
 namespace Tests
 {
     [TestFixture]
-    public class HomeControllerTests : TestBase
+    public class CustomerControllerTests : TestBase
     {
         [Test]
         public void Returns_customer_with_first_name_starting_with_e()
