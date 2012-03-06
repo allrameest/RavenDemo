@@ -12,7 +12,7 @@ namespace ConsoleApplication1
 
 		private static IDocumentStore InitializeStore()
 		{
-			var store = new DocumentStore {Url = "http://localhost:8081/"}
+			var store = new DocumentStore {Url = "http://localhost:8080/"}
 				.RegisterListener(new CustomerVersion1ToVersion2Converter())
 				.Initialize();
 			IndexCreation.CreateIndexes(typeof (Program).Assembly, store);

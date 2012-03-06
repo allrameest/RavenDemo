@@ -4,6 +4,7 @@ using System.Web.Mvc;
 using System.Web.Routing;
 using Autofac;
 using Autofac.Integration.Mvc;
+using Raven.Abstractions.Data;
 using Raven.Client;
 using Raven.Client.Document;
 
@@ -37,12 +38,23 @@ namespace MvcApplication1
             var builder = new ContainerBuilder();
             builder.RegisterControllers(Assembly.GetExecutingAssembly());
             builder.RegisterModelBinders(Assembly.GetExecutingAssembly());
-            builder.RegisterInstance(new DocumentStore {ConnectionStringName = "RavenDB"}.Initialize());
+            builder.RegisterInstance(InitializeDocumentStore());
             builder.Register(c => c.Resolve<IDocumentStore>().OpenSession()).InstancePerLifetimeScope();
 
             var container = builder.Build();
 
             DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
+        }
+
+        private static IDocumentStore InitializeDocumentStore()
+        {
+            var parser = ConnectionStringParser<RavenConnectionStringOptions>.FromConnectionStringName("RavenDB");
+            parser.Parse();
+            return new DocumentStore
+                       {
+                           ApiKey = parser.ConnectionStringOptions.ApiKey,
+                           Url = parser.ConnectionStringOptions.Url,
+                       }.Initialize();
         }
     }
 }
