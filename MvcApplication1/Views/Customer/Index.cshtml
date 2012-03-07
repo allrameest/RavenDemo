@@ -13,8 +13,11 @@
 
 @using (Html.BeginForm("Index", "Customer", FormMethod.Get))
 {
-	@Html.TextBox("query")
+	@Html.TextBox("q")
+
+    <input type="submit" value="Search"/>
 }
+<br/>
 
 <table>
 	<tr>
