@@ -72,6 +72,8 @@
     <Compile Include="DemoTasks\CleanupTask.cs" />
     <Compile Include="DemoTasks\DoStuffWithProductsTask.cs" />
     <Compile Include="DemoTasks\IDemoTask.cs" />
+    <Compile Include="DemoTasks\MapReduceQueryTask.cs" />
+    <Compile Include="Indexes\BlogPosts_ByAuthor.cs" />
     <Compile Include="Indexes\Customers_ByFirstName.cs" />
     <Compile Include="Migration\CustomerVersion1ToVersion2Converter.cs" />
     <Compile Include="DemoTasks\PagedQueryTask.cs" />

@@ -13,7 +13,7 @@ namespace ConsoleApplication1
 
 		private static IDocumentStore InitializeStore()
 		{
-			var store = new DocumentStore {Url = "http://localhost:8080/"}
+			var store = new DocumentStore {Url = "http://localhost:8081/"}
 			//	.RegisterListener(new CustomerVersion1ToVersion2Converter())
 				.Initialize();
 			//store.AggressivelyCacheFor(TimeSpan.FromSeconds(1));
@@ -29,7 +29,7 @@ namespace ConsoleApplication1
 
 			var tasks = new IDemoTask[]
 							{
-								//new CleanupTask(),
+								new CleanupTask(),
 								//new CreateCustomerTask(),
 								//new QueryOnStaticIndexTask(),
 								//new QueryOnDynamicIndexTask(),
@@ -41,6 +41,7 @@ namespace ConsoleApplication1
 								//new StaleResultTask(),
 								//new PagedQueryTask(),
 								//new QueryForMigratedCustomerTask(),
+								//new MapReduceQueryTask(),
 							};
 
 			foreach (var task in tasks)
