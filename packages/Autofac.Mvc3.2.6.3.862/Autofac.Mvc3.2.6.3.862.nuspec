@@ -12,6 +12,9 @@
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>ASP.NET MVC3 Integration for Autofac</description>
     <summary>Provides an IControllerFactory implementation and other integration points for System.Web.Mvc.</summary>
+    <releaseNotes />
+    <copyright />
+    <language />
     <dependencies>
       <dependency id="Autofac" version="2.6.3.862" />
     </dependencies>
