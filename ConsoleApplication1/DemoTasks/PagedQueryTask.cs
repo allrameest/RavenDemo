@@ -1,6 +1,7 @@
 using System;
 using System.Globalization;
 using System.Linq;
+using Raven.Client;
 using Raven.Client.Linq;
 using Shared.Entities;
 

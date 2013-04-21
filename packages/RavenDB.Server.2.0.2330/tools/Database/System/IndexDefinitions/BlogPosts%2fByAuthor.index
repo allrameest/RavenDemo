@@ -1,0 +1,20 @@
+{
+  "Name": "BlogPosts/ByAuthor",
+  "Map": "docs.BlogPosts.Select(post => new {\r\n    Author = post.Author,\r\n    Count = 1\r\n})",
+  "Maps": [
+    "docs.BlogPosts.Select(post => new {\r\n    Author = post.Author,\r\n    Count = 1\r\n})"
+  ],
+  "Reduce": "results.GroupBy(result => result.Author).Select(g => new {\r\n    Author = g.Key,\r\n    Count = Enumerable.Sum(g, x => ((int) x.Count))\r\n})",
+  "TransformResults": null,
+  "IsMapReduce": true,
+  "IsCompiled": false,
+  "IsTemp": false,
+  "Stores": {},
+  "Indexes": {},
+  "SortOptions": {},
+  "Analyzers": {},
+  "Fields": [],
+  "Suggestions": {},
+  "TermVectors": {},
+  "Type": "MapReduce"
+}

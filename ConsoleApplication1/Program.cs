@@ -30,8 +30,8 @@ namespace ConsoleApplication1
 			var tasks = new IDemoTask[]
 							{
 								new CleanupTask(),
-								//new CreateCustomerTask(),
-								//new QueryOnStaticIndexTask(),
+								new CreateCustomerTask(),
+								new QueryOnStaticIndexTask(),
 								//new QueryOnDynamicIndexTask(),
 								//new CreateCustomerAndOrderTask(),
 								//new QueryUsingIncludeTask(),
