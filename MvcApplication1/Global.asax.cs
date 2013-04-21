@@ -1,6 +1,11 @@
-﻿using System.Reflection;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Reflection;
 using System.Web;
+using System.Web.Http;
 using System.Web.Mvc;
+using System.Web.Optimization;
 using System.Web.Routing;
 using Autofac;
 using Autofac.Integration.Mvc;
@@ -10,50 +15,40 @@ using Raven.Client.Document;
 
 namespace MvcApplication1
 {
-	public class MvcApplication : HttpApplication
-	{
-		protected void Application_Start()
-		{
-			AreaRegistration.RegisterAllAreas();
+    // Note: For instructions on enabling IIS6 or IIS7 classic mode, 
+    // visit http://go.microsoft.com/?LinkId=9394801
 
-			RegisterGlobalFilters(GlobalFilters.Filters);
-			RegisterRoutes(RouteTable.Routes);
+    public class MvcApplication : System.Web.HttpApplication
+    {
+        protected void Application_Start()
+        {
+            AreaRegistration.RegisterAllAreas();
 
-			var builder = new ContainerBuilder();
-			builder.RegisterControllers(Assembly.GetExecutingAssembly());
-			builder.RegisterInstance(InitializeStore());
-			builder.Register(c => c.Resolve<IDocumentStore>().OpenSession()).InstancePerLifetimeScope();
+            WebApiConfig.Register(GlobalConfiguration.Configuration);
+            FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
+            RouteConfig.RegisterRoutes(RouteTable.Routes);
+            BundleConfig.RegisterBundles(BundleTable.Bundles);
+            AuthConfig.RegisterAuth();
 
-			var container = builder.Build();
+            var builder = new ContainerBuilder();
+            builder.RegisterControllers(Assembly.GetExecutingAssembly());
+            builder.RegisterInstance(InitializeStore());
+            builder.Register(c => c.Resolve<IDocumentStore>().OpenSession()).InstancePerLifetimeScope();
 
-			DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
-		}
+            var container = builder.Build();
 
-		private static IDocumentStore InitializeStore()
-		{
-			var parser = ConnectionStringParser<RavenConnectionStringOptions>.FromConnectionStringName("RavenDB");
-			parser.Parse();
-			return new DocumentStore
-					   {
-						   ApiKey = parser.ConnectionStringOptions.ApiKey,
-						   Url = parser.ConnectionStringOptions.Url,
-					   }.Initialize();
-		}
+            DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
+        }
 
-		public static void RegisterRoutes(RouteCollection routes)
-		{
-			routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
-
-			routes.MapRoute(
-				"Default",
-				"{controller}/{action}/{id}",
-				new { controller = "Customer", action = "Index", id = UrlParameter.Optional }
-				);
-		}
-		
-		public static void RegisterGlobalFilters(GlobalFilterCollection filters)
-		{
-			filters.Add(new HandleErrorAttribute());
-		}
-	}
+        private static IDocumentStore InitializeStore()
+        {
+            var parser = ConnectionStringParser<RavenConnectionStringOptions>.FromConnectionStringName("RavenDB");
+            parser.Parse();
+            return new DocumentStore
+            {
+                ApiKey = parser.ConnectionStringOptions.ApiKey,
+                Url = parser.ConnectionStringOptions.Url,
+            }.Initialize();
+        }
+    }
 }
