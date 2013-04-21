@@ -13,40 +13,37 @@ namespace ConsoleApplication1.DemoTasks
             using (var session = Program.Store.OpenSession())
             {
                 var strangelove = new Product {Title = "Dr Strangelove"};
-                strangelove.Fields.Add("Length", 90);
-                strangelove.Fields.Add("Actors",
-                                       new[]
-                                           {
-                                               new Actor {Name = "Peter Sellers", Url = "http://www.imdb.com/name/nm0000634/"},
-                                               new Actor {Name = "James Earl Jones"}
-                                           });
+                strangelove.Fields["Length"] = 90;
+                strangelove.Fields["Actors"] = new[]
+                    {
+                        new Actor {Name = "Peter Sellers", Url = "http://www.imdb.com/name/nm0000634/"},
+                        new Actor {Name = "James Earl Jones"}
+                    };
                 session.Store(strangelove);
 
                 var terminator = new Product {Title = "Terminator"};
-                terminator.Fields.Add("Length", 110);
-                terminator.Fields.Add("Actors",
-                                      new[]
-                                          {
-                                              new Actor {Name = "Bob"},
-                                              new Actor {Name = "Arnold"}
-                                          });
+                terminator.Fields["Length"] = 110;
+                terminator.Fields["Actors"] = new[]
+                    {
+                        new Actor {Name = "Bob"},
+                        new Actor {Name = "Arnold"}
+                    };
                 session.Store(terminator);
 
                 var clerks = new Product {Title = "Clerks"};
-                clerks.Fields.Add("Length", 90);
-                clerks.Fields.Add("Actors",
-                                      new[]
-                                          {
-                                              new Actor {Name = "Kevin Smith"},
-                                              new Actor {Name = "Jason Mewes"}
-                                          });
+                clerks.Fields["Length"] = 90;
+                clerks.Fields["Actors"] = new[]
+                    {
+                        new Actor {Name = "Kevin Smith"},
+                        new Actor {Name = "Jason Mewes"}
+                    };
                 session.Store(clerks);
 
                 session.SaveChanges();
 
                 var movies = session.Query<Product>()
-                    .Where(p => p.Fields["Length"] == (object) 90)
-                    .ToArray();
+                                    .Where(p => p.Fields["Length"] == (object) 90)
+                                    .ToArray();
 
                 foreach (var product in movies)
                 {
