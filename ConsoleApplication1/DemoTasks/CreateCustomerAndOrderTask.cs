@@ -10,19 +10,23 @@ namespace ConsoleApplication1.DemoTasks
         {
             string customerId;
             string orderId;
-            using (var session = Program.Store.OpenSession())
+
+            using (var t = new TransactionScope())
             {
-                using (var t = new TransactionScope())
+                using (var session = Program.Store.OpenSession())
                 {
-                	var customer = new Customer {FirstName = "Erik"};
-                	session.Store(customer);
+                    var customer = new Customer {FirstName = "Erik"};
+                    session.Store(customer);
                     customerId = customer.Id;
 
                     session.SaveChanges();
+                }
 
-                    //throw new Exception();
+                //throw new Exception();
 
-                    var order = new Order {CustomerId = customer.Id, Created = DateTime.Now};
+                using (var session = Program.Store.OpenSession())
+                {
+                    var order = new Order {CustomerId = customerId, Created = DateTime.Now};
                     session.Store(order);
                     orderId = order.Id;
 
