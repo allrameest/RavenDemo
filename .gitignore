@@ -15,7 +15,7 @@ build/
 [Oo]bj/
 [Rr]elease/
 _[Rr]e[Ss]harper.*/
-packages/RavenDB*/server/Data/
-packages/RavenDB*/server/Logs/
+packages/RavenDB*/tools/Database/
+packages/RavenDB*/tools/Logs/
 *.crunchproject.local.xml
 *.crunchsolution.local.xml
