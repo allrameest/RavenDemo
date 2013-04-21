@@ -21,7 +21,6 @@ namespace MvcApplication1
 
 			var builder = new ContainerBuilder();
 			builder.RegisterControllers(Assembly.GetExecutingAssembly());
-			builder.RegisterModelBinders(Assembly.GetExecutingAssembly());
 			builder.RegisterInstance(InitializeStore());
 			builder.Register(c => c.Resolve<IDocumentStore>().OpenSession()).InstancePerLifetimeScope();
 
