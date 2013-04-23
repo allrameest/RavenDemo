@@ -30,25 +30,25 @@ namespace MvcApplication1
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             AuthConfig.RegisterAuth();
 
+            var container = BuildContainer();
+            DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
+        }
+
+        private static IContainer BuildContainer()
+        {
             var builder = new ContainerBuilder();
             builder.RegisterControllers(Assembly.GetExecutingAssembly());
             builder.RegisterInstance(InitializeStore());
             builder.Register(c => c.Resolve<IDocumentStore>().OpenSession()).InstancePerLifetimeScope();
-
-            var container = builder.Build();
-
-            DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
+            return builder.Build();
         }
 
         private static IDocumentStore InitializeStore()
         {
-            var parser = ConnectionStringParser<RavenConnectionStringOptions>.FromConnectionStringName("RavenDB");
-            parser.Parse();
             return new DocumentStore
-            {
-                ApiKey = parser.ConnectionStringOptions.ApiKey,
-                Url = parser.ConnectionStringOptions.Url,
-            }.Initialize();
+                {
+                    ConnectionStringName = "RavenDB"
+                }.Initialize();
         }
     }
 }
