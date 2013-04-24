@@ -20,15 +20,24 @@ namespace ConsoleApplication1.DemoTasks
             var stopwatch = Stopwatch.StartNew();
             using (var session = Program.Store.OpenSession())
             {
-                for (int i = 0; i < 1000; i++)
+                for (int i = 0; i < 500; i++)
                 {
                     session.Load<Product>(id);
                 }
             }
 
-            //for (int i = 0; i < 1000; i++)
+            //for (int i = 0; i < 500; i++)
             //{
             //    using (var session = Program.Store.OpenSession())
+            //    {
+            //        session.Load<Product>(id);
+            //    }
+            //}
+
+            //for (int i = 0; i < 500; i++)
+            //{
+            //    using (var session = Program.Store.OpenSession())
+            //    using (session.Advanced.DocumentStore.AggressivelyCacheFor(TimeSpan.FromSeconds(1)))
             //    {
             //        session.Load<Product>(id);
             //    }
